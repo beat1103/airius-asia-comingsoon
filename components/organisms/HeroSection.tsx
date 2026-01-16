@@ -84,8 +84,13 @@ export const HeroSection: React.FC = () => {
       >
         <div className="content_container row align-middle z-10" style={{ display: 'table-cell', verticalAlign: 'middle' }}>
           {/* Headline */}
-          <h2 className="headline text-4xl md:text-5xl lg:text-6xl font-bold mb-8 relative z-[2] uppercase">
-            Award-Winning Fans<br />
+          <h2 className="headline text-4xl md:text-5xl lg:text-6xl font-bold mb-8 relative z-[2] uppercase"
+            style={{
+              lineHeight: '1.2',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Award-Winning Fans<br className='hidden sm:block' />
             really soon!
           </h2>
 

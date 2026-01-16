@@ -54,8 +54,13 @@ export const ContactForm: React.FC = () => {
   return (
     <div className="w-full text-center">
       <h3 className="text-4xl font-bold mb-4">Contact Us</h3>
-      <p className="mb-4 text-center font-bold text-lg">
-      AIRIUS 팬의 장점과 시설을 어떻게 변화시킬 수 있는지 알아보세요!<br />
+      <p className="mb-4 text-center font-bold text-lg"
+      style={{
+        lineHeight: '1.2',
+        whiteSpace: 'nowrap',
+      }}
+      >
+      AIRIUS 팬의 장점과 시설을 어떻게 변화시킬 수 있는지 알아보세요!<br className='hidden sm:block' />
       전문가의 조언과 맞춤형 솔루션을 원하시면 지금 바로 문의해주세요.
       </p>
       
