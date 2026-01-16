@@ -52,14 +52,14 @@ npm start
 ```env
 # SMTP Email Configuration
 SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_SECURE=false
+SMTP_PORT=465
+SMTP_SECURE=true
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
 SMTP_FROM=your-email@gmail.com
 
 # Contact Email (받을 이메일 주소)
-CONTACT_EMAIL=your-email@gmail.com
+CONTACT_EMAIL=master@bigfantech.com
 ```
 
 ### Gmail 사용 시

@@ -23,11 +23,21 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // 환경 변수 검증
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('SMTP credentials are missing')
+      return NextResponse.json(
+        { success: false, error: '이메일 서버 설정이 완료되지 않았습니다.' },
+        { status: 500 }
+      )
+    }
+
     // Nodemailer 설정
+    const smtpPort = parseInt(process.env.SMTP_PORT || '465')
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      port: smtpPort,
+      secure: smtpPort === 465, // 포트 465는 SSL/TLS 필수
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -77,8 +87,25 @@ export async function POST(request: NextRequest) {
     )
   } catch (error) {
     console.error('Email sending error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error details:', {
+      message: errorMessage,
+      stack: error instanceof Error ? error.stack : undefined,
+      env: {
+        SMTP_HOST: process.env.SMTP_HOST ? 'set' : 'missing',
+        SMTP_PORT: process.env.SMTP_PORT ? 'set' : 'missing',
+        SMTP_USER: process.env.SMTP_USER ? 'set' : 'missing',
+        SMTP_PASS: process.env.SMTP_PASS ? 'set' : 'missing',
+        SMTP_FROM: process.env.SMTP_FROM ? 'set' : 'missing',
+        CONTACT_EMAIL: process.env.CONTACT_EMAIL ? 'set' : 'missing',
+      }
+    })
     return NextResponse.json(
-      { success: false, error: '이메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' },
+      { 
+        success: false, 
+        error: '이메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
+      },
       { status: 500 }
     )
   }

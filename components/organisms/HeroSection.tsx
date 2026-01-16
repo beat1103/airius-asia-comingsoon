@@ -90,9 +90,9 @@ export const HeroSection: React.FC = () => {
               whiteSpace: 'nowrap',
             }}
           >
-            Award-Winning Fans<br className='hidden sm:block' />
-            really soon!
-          </h2>
+            홈사이트 리뉴얼 중입니다.
+            <br className='hidden sm:block' />
+            곧 찾아 뵙겠습니다.          </h2>
 
           {/* Timer */}
           <CountdownTimer targetDate={targetDate} />
