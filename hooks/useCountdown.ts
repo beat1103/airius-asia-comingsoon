@@ -18,7 +18,19 @@ export const useCountdown = (targetDate: Date): CountdownState => {
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date().getTime()
-      const distance = targetDate.getTime() - now
+      const target = targetDate.getTime()
+      const distance = target - now
+
+      // 디버깅용 로그 (개발 환경에서만)
+      if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && Math.random() < 0.01) {
+        // 1% 확률로만 로그 출력 (너무 많이 출력되지 않도록)
+        console.log('Countdown Debug:', {
+          now: new Date(now).toISOString(),
+          target: new Date(target).toISOString(),
+          distance,
+          days: Math.floor(distance / (1000 * 60 * 60 * 24))
+        })
+      }
 
       if (distance < 0) {
         setCountdown({ days: '00', hours: '00', minutes: '00', seconds: '00' })

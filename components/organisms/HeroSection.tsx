@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import Image from 'next/image';
 import { Logo } from '../atoms/Logo';
 import { CountdownTimer } from '../molecules/CountdownTimer';
@@ -14,9 +15,31 @@ export const HeroSection: React.FC = () => {
   useHomepageHeight();
   const overlayOpacity = useScrollOpacity();
 
-  // Set target date to January 30, 2025, 00:00 KST (UTC+9)
-  // 한국 시간 2025년 1월 30일 오전 0시
-  const targetDate = new Date('2025-01-30T00:00:00+09:00');
+  // Set target date to January 30, 2026, 00:00 KST (UTC+9)
+  // 한국 시간 2026년 1월 30일 오전 0시
+  const targetDate = useMemo(() => {
+    // 한국 시간 2026년 1월 30일 00:00:00 KST를 UTC로 변환
+    // KST는 UTC+9이므로, 한국 시간 00:00 = UTC 전날 15:00
+    // ISO 8601 형식으로 직접 생성
+    const kstDate = new Date('2026-01-30T00:00:00+09:00');
+
+    // 디버깅용 로그 (개발 환경에서만)
+    if (
+      typeof window !== 'undefined' &&
+      process.env.NODE_ENV === 'development'
+    ) {
+      const now = new Date();
+      const diff = kstDate.getTime() - now.getTime();
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      console.log('Target Date (KST):', kstDate.toISOString());
+      console.log('Target Date (Local):', kstDate.toString());
+      console.log('Current Date:', now.toString());
+      console.log('Days remaining:', days);
+      console.log('Time difference (ms):', diff);
+    }
+
+    return kstDate;
+  }, []);
 
   return (
     <section
