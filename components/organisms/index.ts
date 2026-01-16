@@ -1,0 +1,5 @@
+export { Preloader } from './Preloader'
+export { HeroSection } from './HeroSection'
+export { AboutSection } from './AboutSection'
+export { ContactForm } from './ContactForm'
+export { MoreInfoSection } from './MoreInfoSection'

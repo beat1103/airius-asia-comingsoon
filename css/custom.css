@@ -1,0 +1,322 @@
+/*------------------------------------------------------------------
+[Custom Stylesheet]
+Custom animations and styles for JAMES Coming Soon Template
+-------------------------------------------------------------------*/
+
+/* Preloader Animations */
+.loading .preloader_loader {
+	opacity: 1;
+	-webkit-animation: animInitialHeader 1s cubic-bezier(0.7,0,0.3,1) both;
+	animation: animInitialHeader 1s cubic-bezier(0.7,0,0.3,1) both;
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+
+@-webkit-keyframes animInitialHeader {
+	from { opacity: 0; -webkit-transform: translate3d(0,800px,0); }
+}
+
+@keyframes animInitialHeader {
+	from { opacity: 0; -webkit-transform: translate3d(0,800px,0); transform: translate3d(0,800px,0); }
+}
+
+.loaded .preloader_loader {
+	opacity: 1;
+	-webkit-animation: animLoadedLoader 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+	animation: animLoadedLoader 0.5s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+
+@-webkit-keyframes animLoadedLoader {
+	to { opacity: 0; -webkit-transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1); }
+}
+
+@keyframes animLoadedLoader {
+	to { opacity: 0; -webkit-transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1); transform: translate3d(0,-100%,0) scale3d(0.3,0.3,1); }
+}
+
+.loaded .preloader_header {
+	-webkit-animation: animLoadedHeader 1s cubic-bezier(0.7,0,0.3,1) forwards;
+	animation: animLoadedHeader 1s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+
+@-webkit-keyframes animLoadedHeader {
+	to { -webkit-transform: translate3d(0,-100%,0); }
+}
+
+@keyframes animLoadedHeader {
+	to { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
+}
+
+/* Content animations */
+.loaded .top_bar,
+.loaded .content_container h2,
+.loaded #countdown,
+.loaded .content_container h6,
+.loaded .content_container .newsletter_form,
+.loaded .social_icons_container {
+	animation: animLoadedContent 0.8s cubic-bezier(0.7,0,0.3,1) both;
+	-webkit-animation: animLoadedContent 0.8s cubic-bezier(0.7,0,0.3,1) both;
+}
+ 
+.loaded .top_bar {
+	animation-delay: 0.1s;
+	-webkit-animation-delay: 0.1s;
+}
+
+.loaded .content_container h2,
+.loaded #countdown {
+	animation-delay: 0.2s;
+	-webkit-animation-delay: 0.2s;
+}
+
+.loaded .content_container h6 {
+	animation-delay: 0.25s;
+	-webkit-animation-delay: 0.25s;
+}
+
+.loaded .content_container .newsletter_form {
+	animation-delay: 0.3s;
+	-webkit-animation-delay: 0.3s;
+}
+
+.loaded .social_icons_container {
+	animation-delay: 0.35s;
+	-webkit-animation-delay: 0.35s;
+}
+
+@keyframes animLoadedContent {
+	from { 
+		opacity: 0; 
+		transform: translate3d(0,200px,0);  
+	}
+}
+
+@-webkit-keyframes animLoadedContent {
+	from { 
+		opacity: 0; 
+		-webkit-transform: translate3d(0,200px,0);  
+	}
+}
+
+/* Mockup animations */
+.loaded .mockup-animation1,
+.loaded .mockup-animation2 {
+	animation: MockupAnimLoadedContent 0.7s cubic-bezier(0.5,.01,.51,1) both;
+	-webkit-animation: MockupAnimLoadedContent 0.7s cubic-bezier(0.5,.01,.51,1) both;
+}
+
+.loaded .mockup-animation2 {
+	animation-delay: 1s;
+	-webkit-animation-delay: 1s;   
+}
+
+.loaded .mockup-animation1 {
+	animation-delay: 1.35s;
+	-webkit-animation-delay: 1.35s;   
+}
+ 
+@keyframes MockupAnimLoadedContent {
+	from { 
+		opacity: 0; 
+		transform: translate3d(0,50px,0);  
+	}
+}
+
+@-webkit-keyframes MockupAnimLoadedContent {
+	from { 
+		opacity: 0; 
+		-webkit-transform: translate3d(0,50px,0);  
+	}
+}
+
+/* Input field styles removed - using shadcn/ui components instead */
+
+/* Waves effect */
+.waves-effect {
+	position: relative;
+	cursor: pointer;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transition: all 650ms ease;
+	-moz-transition: all 650ms ease;
+	-o-transition: all 650ms ease;
+	-ms-transition: all 650ms ease;
+	transition: all 650ms ease;
+}
+
+.waves-effect .waves-ripple {
+	position: absolute;
+	pointer-events: none;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	background-clip: padding-box;
+	width: 10px;
+	height: 10px;
+	margin-top: -5px;
+	margin-left: -5px;
+	opacity: 0.25;
+	background-color: rgba(0, 0, 0, 0.2);
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform, opacity;
+	-o-transition-property: -o-transform, opacity;
+	transition-property: transform, opacity;
+	-webkit-transition-duration: 700ms;
+	-moz-transition-duration: 700ms;
+	-o-transition-duration: 700ms;
+	transition-duration: 700ms;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-ms-transform: scale(0);
+	-o-transform: scale(0);
+	transform: scale(0);
+	will-change: transform, opacity;
+}
+
+.waves-effect.waves-light .waves-ripple { 
+	background-color: rgba(255, 255, 255, 0.35); 
+}
+
+/* Background overlays */
+#maximage_slider,
+#maximage_video {
+	z-index: 0;
+	opacity: 0.6;
+	display: none;
+}
+
+#maximage_single {
+	z-index: 0;
+	display: none;
+}
+
+video, object {
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 1;
+	opacity: 0.3;
+}
+
+#maximage_video {
+	background: url('../video/video.jpg') no-repeat 0 0; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.mobile_novideo {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/* Mockup positioning */
+.mockup:before {
+	content: ' ';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.mockup img {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle; 
+	z-index: 0;
+}
+
+/* Message preview */
+#preview {
+	opacity: 0;
+	display: block;
+	position: absolute;
+	width: 100%;	
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+#preview.show_message {
+	opacity: 1;
+	animation: animLoadedContent 0.8s cubic-bezier(0.7,0,0.3,1) both;
+	-webkit-animation: animLoadedContent 0.8s cubic-bezier(0.7,0,0.3,1) both;
+}
+
+.unhappyMessage {
+	display: block;
+	position: absolute;
+	margin-left: 3rem;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+	margin-top: 0;
+	padding-top: -10px;
+	color: #F44336;  
+}
+
+/* Additional Tailwind utilities */
+.hero_fullscreen.mockups .mockup { display: block !important; }
+.hero_fullscreen.timer .countdown { display: block !important; }
+.hero_fullscreen.newsletter .newsletter_form { display: block !important; }
+.hero_fullscreen.headline .slogan { display: block !important; }
+.hero_fullscreen.background_slider #maximage_slider { display: block !important; }
+.hero_fullscreen.background_video #maximage_video { display: block !important; }
+.hero_fullscreen.background_single #maximage_single { display: block !important; }
+
+/* Responsive adjustments */
+@media (max-width: 479px) {
+	.mockup {
+		display: none !important;
+	}
+	
+	.countdown_part {
+		padding-left: 1.2rem;
+		padding-right: 1.2rem;
+	}
+	
+	/* Input field styles removed - using shadcn/ui components instead */
+	
+	.unhappyMessage {
+		margin-left: 0;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.mockup.mockup-right img { width: 18rem; }	
+	.mockup.mockup-left img { width: 18rem; }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.mockup.mockup-right img { margin-right: 0; width: 25rem; }
+	.mockup.mockup-left img { margin-left: 0; width: 25rem; }
+}
+
+@media (min-width: 1200px) {
+	.mockup.mockup-right img { margin-right: 0; }	
+	.mockup.mockup-left img { margin-left: 0; }	
+}
+
+@media (min-width: 1500px) {
+	.mockup.mockup-right img { margin-right: 3%; }
+	.mockup.mockup-left img { margin-left: 3%; }
+}
+
+@media (min-width: 1700px) {
+	.mockup.mockup-right img { margin-right: 10%; }	
+	.mockup.mockup-left img { margin-left: 10%; }
+}
+
+@media (min-width: 1900px) {
+	.mockup.mockup-right img { margin-right: 19%; }
+	.mockup.mockup-left img { margin-left: 19%; }
+}
